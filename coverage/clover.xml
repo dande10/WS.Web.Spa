@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1616153321963" clover="3.2.0">
-  <project timestamp="1616153321963" name="All files">
-    <metrics statements="35" coveredstatements="23" conditionals="17" coveredconditionals="14" methods="21" coveredmethods="12" elements="73" coveredelements="49" complexity="0" loc="35" ncloc="35" packages="3" files="4" classes="4"/>
+<coverage generated="1616156157835" clover="3.2.0">
+  <project timestamp="1616156157835" name="All files">
+    <metrics statements="36" coveredstatements="24" conditionals="17" coveredconditionals="14" methods="21" coveredmethods="12" elements="74" coveredelements="50" complexity="0" loc="36" ncloc="36" packages="3" files="4" classes="4"/>
     <package name="src">
       <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="App.vue" path="C:\Users\vasanthi\Desktop\vue\WS.Web.Spa\src\App.vue">
@@ -10,7 +10,7 @@
       </file>
     </package>
     <package name="src.components">
-      <metrics statements="26" coveredstatements="23" conditionals="17" coveredconditionals="14" methods="15" coveredmethods="12"/>
+      <metrics statements="27" coveredstatements="24" conditionals="17" coveredconditionals="14" methods="15" coveredmethods="12"/>
       <file name="CarouselComponent.vue" path="C:\Users\vasanthi\Desktop\vue\WS.Web.Spa\src\components\CarouselComponent.vue">
         <metrics statements="18" coveredstatements="16" conditionals="17" coveredconditionals="14" methods="10" coveredmethods="8"/>
         <line num="48" count="10" type="stmt"/>
@@ -33,7 +33,7 @@
         <line num="90" count="32" type="cond" truecount="2" falsecount="0"/>
       </file>
       <file name="ProductTilesComponent.vue" path="C:\Users\vasanthi\Desktop\vue\WS.Web.Spa\src\components\ProductTilesComponent.vue">
-        <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
+        <metrics statements="9" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
         <line num="48" count="1" type="stmt"/>
         <line num="52" count="4" type="stmt"/>
         <line num="62" count="0" type="stmt"/>
@@ -42,6 +42,7 @@
         <line num="71" count="1" type="stmt"/>
         <line num="72" count="1" type="stmt"/>
         <line num="75" count="21" type="stmt"/>
+        <line num="76" count="21" type="stmt"/>
       </file>
     </package>
     <package name="src.store">

@@ -59,20 +59,21 @@ export default {
   },
   computed: {
     getProductSaleList() {
-      return this.$store.state.products;
+      return this.$store.state.products; // get the products list from state.
     },
   },
   created() {
-    this.$store.dispatch("loadProducts");
+    this.$store.dispatch("loadProducts"); // loading products using action call from store
   },
   methods: {
     showCarosalModal: function (list) {
-      this.showModal = true;
+      this.showModal = true; // to show modal
       let self = this;
-      self.images = list.images;
+      self.images = list.images; // each modal
     },
     getPrice: function (price, range) {
-      return price[range].toFixed(0);
+      const priceRange = parseFloat(price[range].toFixed(0)).toLocaleString();
+      return priceRange; // removing decimal and fixed the value to nearest and value is formatting using toLocalString().
     },
   },
 };
