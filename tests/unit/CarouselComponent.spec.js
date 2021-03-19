@@ -1,34 +1,14 @@
 import { shallowMount } from "@vue/test-utils";
 import CarouselComponent from "@/components/CarouselComponent.vue";
+import { mockSlides, mockImagesData } from "../mocks/data";
 let wrapper;
 const mockData = {
   active: 1,
-  images: [
-    {
-      size: "m",
-      meta: "",
-      alt: "",
-      rel: "althero",
-      width: 363,
-      href:
-        "https://assets.weimgs.com/weimgs/ab/images/wcm/products/202111/0061/walnut-led-desk-lamp-2-m.jpg",
-      height: 363,
-    },
-    {
-      size: "m",
-      meta: "",
-      alt: "",
-      rel: "althero",
-      width: 363,
-      href:
-        "https://assets.weimgs.com/weimgs/ab/images/wcm/products/202111/0061/walnut-led-desk-lamp-5-m.jpg",
-      height: 363,
-    },
-  ],
+  images: mockImagesData
 };
 beforeEach(() => {
   wrapper = shallowMount(CarouselComponent, {
-    propsData: mockData,
+    propsData: mockData
   });
 });
 
@@ -56,17 +36,14 @@ describe("CarouselComponent", () => {
   test("Previous icon disabled", () => {
     const PreviousIconElement = wrapper.findAll("span").at(0);
     wrapper.setData({
-      active: 1,
+      active: 1
     });
     wrapper.vm.$nextTick();
     expect(PreviousIconElement.attributes("class")).toBe("prev disabled");
   });
 
   test("computed property for getSLides", () => {
-    const slides = [
-      "https://assets.weimgs.com/weimgs/ab/images/wcm/products/202111/0061/walnut-led-desk-lamp-2-m.jpg",
-      "https://assets.weimgs.com/weimgs/ab/images/wcm/products/202111/0061/walnut-led-desk-lamp-5-m.jpg",
-    ];
+    const slides = mockSlides;
     expect(wrapper.vm.getSlides).toEqual(slides);
 
     // length of slides

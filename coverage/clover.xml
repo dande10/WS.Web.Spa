@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1616127507233" clover="3.2.0">
-  <project timestamp="1616127507233" name="All files">
+<coverage generated="1616128385761" clover="3.2.0">
+  <project timestamp="1616128385762" name="All files">
     <metrics statements="35" coveredstatements="23" conditionals="17" coveredconditionals="14" methods="21" coveredmethods="12" elements="73" coveredelements="49" complexity="0" loc="35" ncloc="35" packages="3" files="4" classes="4"/>
     <package name="src">
       <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -34,14 +34,14 @@
       </file>
       <file name="ProductTilesComponent.vue" path="C:\Users\vasanthi\Desktop\vue\WS.Web.Spa\src\components\ProductTilesComponent.vue">
         <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
-        <line num="46" count="1" type="stmt"/>
-        <line num="50" count="4" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="64" count="4" type="stmt"/>
-        <line num="68" count="1" type="stmt"/>
-        <line num="69" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="52" count="4" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="66" count="4" type="stmt"/>
         <line num="70" count="1" type="stmt"/>
-        <line num="73" count="21" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="75" count="21" type="stmt"/>
       </file>
     </package>
     <package name="src.store">
