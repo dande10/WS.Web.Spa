@@ -9,8 +9,8 @@ import ProductTilesComponent from "./components/ProductTilesComponent.vue";
 export default {
   name: "App",
   components: {
-    ProductTilesComponent
-  }
+    ProductTilesComponent,
+  },
 };
 </script>
 

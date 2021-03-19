@@ -7,29 +7,28 @@
           <div class="slider-container">
             <span
               :class="['prev', { disabled: active === 1 }]"
-              @click="slideChange(-1)"
+              @click="prevSlide"
               >&#10094;</span
             >
             <div class="slides">
               <div v-for="(img, index) in images" :key="index">
                 <img
                   :src="`${img.href}`"
-                  style="width:100%"
-                  v-show="img.href"
-                  v-if="++index === active"
+                  style="width: 100%"
+                  v-show="isActiveImage(img, index)"
                 />
               </div>
             </div>
 
             <span
-              :class="['next', { disabled: active == slides }]"
-              @click="slideChange(1)"
+              :class="['next', { disabled: active == lengthOfSlides }]"
+              @click="nextSlide"
               >&#10095;</span
             >
           </div>
           <div class="dots-container">
             <span
-              v-for="(dot, index) in getSlides && getSlides.length"
+              v-for="(dot, index) in lengthOfSlides"
               :key="index"
               :class="['dots', { active: ++index === active }]"
               @click="jump(index)"
@@ -48,41 +47,49 @@ export default {
   data() {
     return {
       active: 1,
-      slides: this.images.length
     };
   },
   computed: {
     getSlides() {
       let slides = [];
       if (this.images != null && this.images.length) {
-        this.images.forEach(img => {
+        this.images.forEach((img) => {
           return img.href ? slides.push(img.href) : null;
         });
       }
       return slides;
-    }
+    },
+    lengthOfSlides() {
+      return this.getSlides?.length ? this.getSlides.length : 0;
+    },
   },
   methods: {
-    closeModal: function() {
+    closeModal() {
       this.$emit("close");
     },
-
-    slideChange: function(amount) {
-      let newActive;
-      let self = this;
-      const newIndex = self.active + amount;
-      if (newIndex > this.getSlides.length) {
+    nextSlide() {
+      this.slideChange(1);
+    },
+    prevSlide() {
+      this.slideChange(-1);
+    },
+    slideChange(amount) {
+      let newActive = this.active + amount;
+      if (newActive > this.getSlides.length) {
         newActive = 1;
       }
-      if (newIndex === 0) {
+      if (newActive <= 0) {
         newActive = this.getSlides.length;
       }
-      self.active = newActive || newIndex;
+      this.active = newActive;
     },
-    jump: function(index) {
+    jump(index) {
       this.active = index;
-    }
-  }
+    },
+    isActiveImage(img, index) {
+      return img.href && index + 1 === this.active;
+    },
+  },
 };
 </script>
 
@@ -102,14 +109,15 @@ export default {
   top: 50%;
 }
 .next {
-  right: 25%;
+  right: 0;
 }
 .dots-container {
   position: absolute;
   padding: 5px 0px;
-  width: 50%;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  margin-top: -29px;
+  bottom: 0;
+  left: 0;
 }
 
 .dots {
@@ -123,11 +131,13 @@ export default {
   display: inline-block;
   transition: background-color 0.6s ease;
 }
+
 .disabled {
   pointer-events: none;
   cursor: not-allowed;
   opacity: 0.5;
 }
+
 .active {
   background-color: #ccc;
 }
@@ -145,9 +155,10 @@ export default {
     font-size: 11px;
   }
 }
+
 .modal-mask {
   position: fixed;
-  z-index: 9998;
+  z-index: 9999;
   top: 0;
   left: 0;
   width: 100%;
@@ -164,12 +175,15 @@ export default {
 
 .modal-container {
   width: 50%;
+  display: flex;
+  position: relative;
   margin: 0px auto;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
 }
+
 @media only screen and (min-width: 1600px) {
   .modal-container {
     min-height: 800px;
@@ -181,15 +195,15 @@ export default {
 }
 .slider-container {
   display: flex;
+  width: 100%;
 }
 .slides {
   width: 100%;
 }
 .close-modal {
   position: absolute;
-  right: 24%;
-  margin-top: -8px;
-  top: 20%0;
+  right: -12.5px;
+  top: -12.5px;
   cursor: pointer;
   width: 25px;
   height: 25px;

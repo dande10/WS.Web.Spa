@@ -1,33 +1,32 @@
 <template>
-  <div class="container">
+  <div class="product-tiles-component container">
     <main class="grid">
       <article v-for="(list, index) in getProductSaleList" :key="index">
         <img
+          class="product-image"
           :src="`${list.hero.href}`"
           :alt="list.hero.alt"
           @click="showCarosalModal(list)"
-          v-if="list.hero.href"
+          v-show="list.hero.href"
         />
         <div class="text">
-          <h3>{{ list.name }}</h3>
+          <h3 class="product-name">{{ list.name }}</h3>
           <div v-if="list.price">
-            <p>
-              <strong>Regular price:</strong> ${{
-                getPrice(list.price, "regular")
-              }}
+            <p class="regular-price">
+              <strong>Regular price:</strong>
+              ${{ getPrice(list.price, "regular") }}
             </p>
             <p class="selling-price">
-              <strong>Selling price:</strong> ${{
-                getPrice(list.price, "selling")
-              }}
+              <strong>Selling price:</strong>
+              ${{ getPrice(list.price, "selling") }}
             </p>
           </div>
           <div v-if="list.priceRange && list.priceRange.selling">
-            <p>
-              <strong>Price:</strong> ${{
-                getPrice(list.priceRange.selling, "low")
+            <p class="price-range">
+              <strong>Price:</strong>
+              ${{ getPrice(list.priceRange.selling, "low") }} - ${{
+                getPrice(list.priceRange.selling, "high")
               }}
-              - ${{ getPrice(list.priceRange.selling, "high") }}
             </p>
             <p v-if="list.priceRange.type" class="special-price">
               Special Savings
@@ -52,30 +51,30 @@ export default {
   data() {
     return {
       showModal: false,
-      images: []
+      images: [],
     };
   },
   components: {
-    CarouselComponent
+    CarouselComponent,
   },
   computed: {
     getProductSaleList() {
       return this.$store.state.products;
-    }
+    },
   },
   created() {
     this.$store.dispatch("loadProducts");
   },
   methods: {
-    showCarosalModal: function(list) {
+    showCarosalModal: function (list) {
       this.showModal = true;
       let self = this;
       self.images = list.images;
     },
-    getPrice: function(price, range) {
+    getPrice: function (price, range) {
       return price[range].toFixed(0);
-    }
-  }
+    },
+  },
 };
 </script>
 
