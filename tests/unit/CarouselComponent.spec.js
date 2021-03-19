@@ -4,11 +4,11 @@ import { mockSlides, mockImagesData } from "../mocks/data";
 let wrapper;
 const mockData = {
   active: 1,
-  images: mockImagesData
+  images: mockImagesData,
 };
 beforeEach(() => {
   wrapper = shallowMount(CarouselComponent, {
-    propsData: mockData
+    propsData: mockData,
   });
 });
 
@@ -33,13 +33,56 @@ describe("CarouselComponent", () => {
     expect(wrapper.emitted().close).toBeTruthy();
   });
 
-  test("Previous icon disabled", () => {
-    const PreviousIconElement = wrapper.findAll("span").at(0);
+  test("Previous icon disabled", async () => {
+    const previousIconElement = wrapper.findAll("span").at(0);
     wrapper.setData({
-      active: 1
+      active: 1,
     });
-    wrapper.vm.$nextTick();
-    expect(PreviousIconElement.attributes("class")).toBe("prev disabled");
+    await wrapper.vm.$nextTick();
+    expect(previousIconElement.attributes("class")).toBe("prev disabled");
+  });
+
+  test("Previous icon not disabled", async () => {
+    const previousIconElement = wrapper.findAll("span").at(0);
+
+    wrapper.setData({
+      active: 3,
+    });
+    await wrapper.vm.$nextTick();
+    expect(previousIconElement.attributes("class")).toBe("prev");
+  });
+
+  test("is Active Image", async () => {
+    // false case
+    wrapper.vm.active = 1;
+    const result = wrapper.vm.isActiveImage(mockImagesData[0], 1);
+    await wrapper.vm.$nextTick();
+    expect(result).toBe(false);
+
+    // true case
+    wrapper.vm.active = 2;
+    const result1 = wrapper.vm.isActiveImage(mockImagesData[0], 1);
+    await wrapper.vm.$nextTick();
+    expect(result1).toBe(true);
+  });
+
+  test("Next icon disabled", async () => {
+    const nextIconElement = wrapper.findAll("span").at(1);
+    wrapper.setData({
+      active: 1,
+    });
+    await wrapper.vm.$nextTick();
+    expect(nextIconElement.attributes("class")).toBe("next");
+  });
+
+  test("Next icon not disabled", async () => {
+    const nextIconElement = wrapper.findAll("span").at(1);
+
+    wrapper.setData({
+      active: 2,
+    });
+    await wrapper.vm.$nextTick();
+    expect(nextIconElement.attributes("class")).toBe("next disabled");
   });
 
   test("computed property for getSLides", () => {

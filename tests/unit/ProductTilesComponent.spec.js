@@ -7,18 +7,18 @@ const localVue = createLocalVue();
 localVue.use(Vuex);
 let wrapper;
 const mockData = {
-  showModal: false
+  showModal: false,
 };
 
 const actions = {
-  loadProducts: jest.fn()
+  loadProducts: jest.fn(),
 };
 
 const store = new Vuex.Store({
   state: {
-    products: []
+    products: [],
   },
-  actions
+  actions,
 });
 beforeEach(() => {
   wrapper = shallowMount(ProductTilesComponent, {
@@ -26,11 +26,11 @@ beforeEach(() => {
     store,
     localVue,
     computed: {
-      getProductSaleList: () => mockProducts
+      getProductSaleList: () => mockProducts,
     },
     stubs: {
-      "carousel-component": true
-    }
+      "carousel-component": true,
+    },
   });
 });
 
@@ -44,7 +44,6 @@ describe("ProductTilesComponent", () => {
   });
 
   test("to show the modal to user when image clicked", () => {
-    store.commit("setProducts", mockProducts);
     wrapper.vm.showModal = false;
     expect(wrapper.vm.showModal).toBe(false);
     const imageElement = wrapper.find(".product-image");
