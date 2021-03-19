@@ -50,7 +50,7 @@ export default {
   name: "product-tiles-component",
   data() {
     return {
-      showModal: false,
+      showModal: false, //default
       images: [],
     };
   },

@@ -46,7 +46,7 @@ export default {
   props: ["images"],
   data() {
     return {
-      active: 1,
+      active: 1, // default
     };
   },
   computed: {
@@ -57,15 +57,15 @@ export default {
           return img.href ? slides.push(img.href) : null;
         });
       }
-      return slides;
+      return slides; // returning all images with img.href
     },
     lengthOfSlides() {
-      return this.getSlides?.length ? this.getSlides.length : 0;
+      return this.getSlides?.length ? this.getSlides.length : 0; // Caluclating length of slides
     },
   },
   methods: {
     closeModal() {
-      this.$emit("close");
+      this.$emit("close"); // emitting the event to close
     },
     nextSlide() {
       this.slideChange(1);
@@ -87,7 +87,7 @@ export default {
       this.active = index;
     },
     isActiveImage(img, index) {
-      return img.href && index + 1 === this.active;
+      return img.href && index + 1 === this.active; // index start from 0 added plus 1 if it is equal to Active then image will show.
     },
   },
 };
