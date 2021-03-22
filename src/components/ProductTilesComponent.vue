@@ -25,10 +25,12 @@
             <p class="price-range">
               <strong>Price:</strong>
               ${{ getPrice(list.priceRange.selling, "low") }} - ${{
-              getPrice(list.priceRange.selling, "high")
+                getPrice(list.priceRange.selling, "high")
               }}
             </p>
-            <p v-if="list.priceRange.type" class="special-price">Special Savings</p>
+            <p v-if="list.priceRange.type" class="special-price">
+              Special Savings
+            </p>
           </div>
         </div>
       </article>

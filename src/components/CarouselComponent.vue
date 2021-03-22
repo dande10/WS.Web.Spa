@@ -5,17 +5,26 @@
         <div class="modal-container">
           <div @click="closeModal" class="close-modal">x</div>
           <div class="slider-container">
-            <span :class="['prev', { disabled: active === 1 }]" @click="prevSlide">&#10094;</span>
+            <span
+              :class="['prev', { disabled: active === 1 }]"
+              @click="prevSlide"
+              >&#10094;</span
+            >
             <div class="slides">
               <div v-for="(img, index) in images" :key="index">
-                <img :src="`${img.href}`" class="img-content" v-show="isActiveImage(img, index)" />
+                <img
+                  :src="`${img.href}`"
+                  class="img-content"
+                  v-show="isActiveImage(img, index)"
+                />
               </div>
             </div>
 
             <span
               :class="['next', { disabled: active == lengthOfSlides }]"
               @click="nextSlide"
-            >&#10095;</span>
+              >&#10095;</span
+            >
           </div>
           <div class="dots-container">
             <span
