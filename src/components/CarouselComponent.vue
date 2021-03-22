@@ -5,26 +5,17 @@
         <div class="modal-container">
           <div @click="closeModal" class="close-modal">x</div>
           <div class="slider-container">
-            <span
-              :class="['prev', { disabled: active === 1 }]"
-              @click="prevSlide"
-              >&#10094;</span
-            >
+            <span :class="['prev', { disabled: active === 1 }]" @click="prevSlide">&#10094;</span>
             <div class="slides">
               <div v-for="(img, index) in images" :key="index">
-                <img
-                  :src="`${img.href}`"
-                  style="width: 100%"
-                  v-show="isActiveImage(img, index)"
-                />
+                <img :src="`${img.href}`" class="img-content" v-show="isActiveImage(img, index)" />
               </div>
             </div>
 
             <span
               :class="['next', { disabled: active == lengthOfSlides }]"
               @click="nextSlide"
-              >&#10095;</span
-            >
+            >&#10095;</span>
           </div>
           <div class="dots-container">
             <span
@@ -174,7 +165,7 @@ export default {
 }
 
 .modal-container {
-  width: 50%;
+  width: 35%;
   display: flex;
   position: relative;
   margin: 0px auto;
@@ -184,10 +175,14 @@ export default {
   transition: all 0.3s ease;
 }
 
-@media only screen and (min-width: 1600px) {
-  .modal-container {
-    min-height: 800px;
+@media only screen and (min-width: 1200px) {
+  .img-content {
+    max-height: calc(100vh - 250px);
   }
+}
+
+.img-content {
+  width: 100%;
 }
 
 .modal-body {

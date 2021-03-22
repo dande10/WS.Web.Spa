@@ -25,12 +25,10 @@
             <p class="price-range">
               <strong>Price:</strong>
               ${{ getPrice(list.priceRange.selling, "low") }} - ${{
-                getPrice(list.priceRange.selling, "high")
+              getPrice(list.priceRange.selling, "high")
               }}
             </p>
-            <p v-if="list.priceRange.type" class="special-price">
-              Special Savings
-            </p>
+            <p v-if="list.priceRange.type" class="special-price">Special Savings</p>
           </div>
         </div>
       </article>
@@ -73,27 +71,33 @@ export default {
     },
     getPrice: function (price, range) {
       const priceRange = parseFloat(price[range].toFixed(0)).toLocaleString();
-      return priceRange; // removing decimal and fixed the value to nearest and value is formatting using toLocalString().
+      return priceRange; // removing decimal and fixed the value to nearest and value is formatting using toLocaleString().
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
+.container {
+  margin: 0 auto;
+}
 .grid {
   display: grid;
-  grid-template-columns: repeat(1, minmax(280px, 1fr));
+  grid-template-columns: repeat(1, minmax(380px, 1fr));
   grid-gap: 20px;
-  align-items: stretch;
+  width: 363px;
 }
 @media only screen and (min-width: 768px) {
   .grid {
-    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, minmax(380px, 1fr));
   }
 }
 @media only screen and (min-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, minmax(380px, 1fr));
+  }
+  .container {
+    width: 1200px;
   }
 }
 
